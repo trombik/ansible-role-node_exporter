@@ -43,3 +43,9 @@ ports.each do |p|
     it { should be_listening }
   end
 end
+
+describe command "curl -s http://localhost:9100/metrics" do
+  its(:exit_status) { should eq 0 }
+  its(:stderr) { should eq "" }
+  its(:stdout) { should match(/^node_load1\s+\d+\.\d+$/) }
+end
