@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: node_exporter
   author: Tomoyuki Sakurai
   description: Configures something
   company: N/A

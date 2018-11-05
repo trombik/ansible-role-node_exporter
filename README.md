@@ -1,6 +1,7 @@
-# ansible-role-node_exporter
+# Ansible role `node_exporter`
 
-A brief description of the role goes here.
+
+Configures `node_exporter`.
 
 # Requirements
 
@@ -8,9 +9,32 @@ None
 
 # Role Variables
 
-| variable | description | default |
+| Variable | Description | Default |
 |----------|-------------|---------|
+| `node_exporter_user` | User name of `node_exporter` | `{{ __node_exporter_user }}` |
+| `node_exporter_group` | Group name of `node_exporter` | `{{ __node_exporter_group }}` |
+| `node_exporter_service` | Service name of `node_exporter` | `{{ __node_exporter_service }}` |
+| `node_exporter_package` | Package name of `node_exporter` | `{{ __node_exporter_package }}` |
+| `node_exporter_flags` | Flags to pass `node_exporter` (FreeBSD only at the moment) | `""` |
 
+
+## Debian
+
+| Variable | Default |
+|----------|---------|
+| `__node_exporter_user` | `prometheus` |
+| `__node_exporter_group` | `prometheus` |
+| `__node_exporter_service` | `prometheus-node-exporter` |
+| `__node_exporter_package` | `prometheus-node-exporter` |
+
+## FreeBSD
+
+| Variable | Default |
+|----------|---------|
+| `__node_exporter_user` | `nobody` |
+| `__node_exporter_group` | `nobody` |
+| `__node_exporter_service` | `node_exporter` |
+| `__node_exporter_package` | `node_exporter` |
 
 # Dependencies
 
@@ -19,6 +43,14 @@ None
 # Example Playbook
 
 ```yaml
+- hosts: localhost
+  roles:
+    - ansible-role-node_exporter
+  vars:
+    flags_map:
+      FreeBSD: |
+        node_exporter_args='--log.format="logger:stderr"'
+    node_exporter_flags: "{{ flags_map[ansible_os_family] }}"
 ```
 
 # License
