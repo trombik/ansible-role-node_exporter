@@ -3,8 +3,6 @@ require "serverspec"
 
 package = "prometheus-node-exporter"
 service = "prometheus-node-exporter"
-user    = "prometheus"
-group   = "prometheus"
 ports   = [9100]
 default_user = "root"
 default_group = "root"
@@ -13,8 +11,6 @@ flags = ""
 case os[:family]
 when "freebsd"
   default_group = "wheel"
-  user = "nobody"
-  group = "nobody"
   package = "node_exporter"
   service = "node_exporter"
   flags = "node_exporter_args='--log.format=\"logger:stderr\"'"
