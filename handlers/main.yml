@@ -2,5 +2,5 @@
 
 - name: Restart node_exporter
   service:
-    name: node_exporter
+    name: "{{ node_exporter_service }}"
     state: restarted

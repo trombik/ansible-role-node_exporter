@@ -1,6 +1,18 @@
 ---
 
+- name: Create /etc/rc.conf.d/node_exporter
+  template:
+    src: FreeBSD.subr.j2
+    dest: "/etc/rc.conf.d/{{ node_exporter_service }}"
+    validate: sh -n %s
+  notify: Restart node_exporter
+
 - name: Install node_exporter
   pkgng:
-    name: node_exporter
+    name: "{{ node_exporter_package }}"
     state: present
+
+- name: Enabel node_exporter
+  service:
+    name: "{{ node_exporter_service }}"
+    enabled: yes
