@@ -2,4 +2,7 @@
   roles:
     - ansible-role-node_exporter
   vars:
-    node_exporter_config: ""
+    flags_map:
+      FreeBSD: |
+        node_exporter_args='--log.format="logger:stderr"'
+    node_exporter_flags: "{{ flags_map[ansible_os_family] }}"

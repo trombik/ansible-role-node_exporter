@@ -5,31 +5,6 @@
 
 - include: "install-{{ ansible_os_family }}.yml"
 
-- name: Create log directory
-  file:
-    path: "{{ node_exporter_log_dir }}"
-    mode: 0755
-    owner: "{{ node_exporter_user }}"
-    group: "{{ node_exporter_group }}"
-    state: directory
-  notify: Restart node_exporter
-
-- name: Create db directory
-  file:
-    path: "{{ node_exporter_db_dir }}"
-    mode: 0755
-    owner: "{{ node_exporter_user }}"
-    group: "{{ node_exporter_group }}"
-    state: directory
-  notify: Restart node_exporter
-
-- name: Create node_exporter.conf
-  template:
-    src: node_exporter.conf.j2
-    dest: "{{ node_exporter_conf_file }}"
-    validate: echo %s
-  notify: Restart node_exporter
-
 - name: Start node_exporter
   service:
     name: "{{ node_exporter_service }}"

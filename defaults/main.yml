@@ -1,8 +1,5 @@
-node_exporter_user: node_exporter
-node_exporter_group: node_exporter
-node_exporter_log_dir: /var/log/node_exporter
-node_exporter_db_dir: "{{ __node_exporter_db_dir }}"
-node_exporter_service: node_exporter
-node_exporter_conf_dir: "{{ __node_exporter_conf_dir }}"
-node_exporter_conf_file: "{{ __node_exporter_conf_dir }}/node_exporter.conf"
+node_exporter_user: "{{ __node_exporter_user }}"
+node_exporter_group: "{{ __node_exporter_group }}"
+node_exporter_service: "{{ __node_exporter_service }}"
+node_exporter_package: "{{ __node_exporter_package }}"
 node_exporter_flags: ""

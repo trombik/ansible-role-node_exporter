@@ -1,0 +1,4 @@
+__node_exporter_user: prometheus
+__node_exporter_group: prometheus
+__node_exporter_service: prometheus-node-exporter
+__node_exporter_package: prometheus-node-exporter

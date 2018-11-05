@@ -1,2 +1,4 @@
-__node_exporter_db_dir: /var/db/node_exporter
-__node_exporter_conf_dir: /usr/local/etc/node_exporter
+__node_exporter_user: nobody
+__node_exporter_group: nobody
+__node_exporter_service: node_exporter
+__node_exporter_package: node_exporter

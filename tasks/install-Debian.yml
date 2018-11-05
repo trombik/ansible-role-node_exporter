@@ -1,0 +1,11 @@
+---
+
+- name: Install node_exporter
+  apt:
+    name: "{{ node_exporter_package }}"
+    state: present
+
+- name: Enable node_exporter
+  service:
+    name: "{{ node_exporter_service }}"
+    enabled: yes
