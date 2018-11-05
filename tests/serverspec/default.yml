@@ -1,0 +1,5 @@
+- hosts: localhost
+  roles:
+    - ansible-role-node_exporter
+  vars:
+    node_exporter_config: ""

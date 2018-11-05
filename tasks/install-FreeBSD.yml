@@ -1,0 +1,6 @@
+---
+
+- name: Install node_exporter
+  pkgng:
+    name: node_exporter
+    state: present
